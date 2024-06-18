@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  line-bot:
+    build:
+      context: .
+      target: line-bot
+    volumes:
+      - ./run:/app/run
+    ports:
+      - "5000:5000"
+    networks:
+      - discord-line-message-sync
+
+  discord-bot:
+    build:
+      context: .
+      target: discord-bot
+    volumes:
+      - ./run:/app/run
+    ports:
+      - "5555:5555"
+    networks:
+      - discord-line-message-sync
+
+networks:
+  discord-line-message-sync:
+    driver: bridge

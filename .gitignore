@@ -15,3 +15,7 @@ venv
 *.spec
 build
 dist
+
+# Docker
+run/*
+!run/.gitkeep
